@@ -156,7 +156,7 @@ public class PassedOutManager
 
     public void CreateInstance(Character character)
     {
-        if (passedOutCanvas == null || template == null)
+        if (passedOutCanvas == null || template == null || character.name == Character.localCharacter.name)
             return;
 
         UpdateInstance(character);
