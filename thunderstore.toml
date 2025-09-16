@@ -15,22 +15,22 @@ BepInEx-BepInExPack = "5.4.2403"
 
 [build]
 icon = "./icon.png"
-readme = "../README.md"
-outdir = "../../Packages"
+readme = "./README.md"
+outdir = "../Packages"
 
 [[build.copy]]
-source = "../artifacts/bin/DownedAwareness/release/lucyddemon.downedawareness.dll"
+source = "./artifacts/bin/DownedAwareness/release/lucyddemon.downedawareness.dll"
 target = "BepInEx/plugins/DownedAwareness/lucyddemon.downedawareness.dll"
 
 [[build.copy]]
-source = "../LICENSE"
+source = "./LICENSE"
 target = "LICENSE"
 
 [[build.copy]]
-source = "../CHANGELOG.md"
+source = "./CHANGELOG.md"
 target = "CHANGELOG.md"
 
 [publish]
 communities = [ "peak" ]
 [publish.categories]
-peak = [ "mods", "qol", "client" ]
+peak = [ "mods", "qol", "client", "misc" ]

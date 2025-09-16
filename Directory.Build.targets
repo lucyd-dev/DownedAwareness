@@ -67,4 +67,10 @@ internal static class MyPluginInfo {
         <None Update=".gitattributes" CopyToPluginOutputDirectory="Never" />
         <None Update=".gitignore" CopyToPluginOutputDirectory="Never" />
     </ItemGroup>
+
+    <Target Name="PublishThunderstore" AfterTargets="PostBuildEvent"
+        Condition="$(Configuration) == 'Release'">
+        <Exec
+            Command="dotnet tcli build --config-path &quot;$(ProjectDir)thunderstore.toml&quot; --package-version $(Version)" />
+    </Target>
 </Project>
