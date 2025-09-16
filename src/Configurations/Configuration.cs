@@ -22,7 +22,7 @@ class DownedAwarenessConfig
                 10f,
                 new ConfigDescription(
                     "How long should the dead marker exists? (set 0 to turn off)",
-                    new AcceptableValueRange<int>(0, 100)
+                    new AcceptableValueRange<float>(0, 100)
                 )
             );
         }
