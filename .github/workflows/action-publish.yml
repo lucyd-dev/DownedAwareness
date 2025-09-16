@@ -17,9 +17,8 @@ jobs:
                 repo: thunderstore.io
                 namespace: LucydDemon
                 description: Cant see where your unconscious friends are? This mod adds an indicator to make it easier to find them.
-                name: ${{ env.name }}
+                name: DownedAwareness
                 version: ${{ github.ref_name }}
-                deps: BepInEx-BepInExPack@5.4.2403
                 token: ${{ secrets.TS_KEY }}
                 community: peak
                 categories: |
