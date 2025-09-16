@@ -73,6 +73,6 @@ internal static class MyPluginInfo {
         <Exec
             Command="dotnet tcli build --config-path &quot;$(ProjectDir)thunderstore.toml&quot; --package-version $(Version)" />
         <Exec
-            Command="dotnet tcli publish --config-path &quot;$(ProjectDir)thunderstore.toml&quot; --file &quot;$(ProjectDir)../Packages/LucydDemon-DisableItemsInShop-$(Version).zip&quot;" />
+            Command="dotnet tcli publish --config-path &quot;$(ProjectDir)thunderstore.toml&quot; --file &quot;$(ProjectDir)../Packages/$(Authors)-$(Product)-$(Version).zip&quot;" />
     </Target>
 </Project>
