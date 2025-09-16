@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Project Properties -->
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>DownedAwareness</RootNamespace>
+		<AssemblyName>lucyddemon.downedawareness</AssemblyName>
+		<Product>DownedAwareness</Product>
+		<Authors>LucydDemon</Authors>
+		<Version>0.0.1</Version>
+    </PropertyGroup>
+</Project>

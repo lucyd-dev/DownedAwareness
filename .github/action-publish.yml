@@ -1,0 +1,28 @@
+name: Publish Mod
+
+# Run when a new tag is pushed (ie. via GitHub release or `git tag`)
+on:
+    push:
+        tags:
+            - '*'
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            # Use checkout to publish the files in your repo
+            - uses: actions/checkout@v4
+            - uses: GreenTF/upload-thunderstore-package@v4.3
+              with:
+                repo: thunderstore.io
+                namespace: LucydDemon
+                description: Cant see where your unconscious friends are? This mod adds an indicator to make it easier to find them.
+                name: ${{ env.name }}
+                version: ${{ github.ref_name }}
+                deps: BepInEx-BepInExPack@5.4.2403
+                token: ${{ secrets.TS_KEY }}
+                community: peak
+                categories: |
+                  mods
+                  qol
+                  client
