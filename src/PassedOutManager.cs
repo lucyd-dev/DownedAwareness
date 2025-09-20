@@ -164,7 +164,6 @@ public class PassedOutManager
         GameObject newInstance = Object.Instantiate(template, passedOutCanvas.transform);
 
         var passedOutComponent = newInstance.GetComponent<PassedOut>();
-        passedOutComponent.position = character.TorsoPos();
         passedOutComponent.character = character;
 
         newInstance.SetActive(true);

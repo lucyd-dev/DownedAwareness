@@ -6,7 +6,6 @@ namespace DownedAwareness;
 
 public class PassedOut : MonoBehaviour
 {
-    public Vector3 position;
     public Character? character;
     private TextMeshProUGUI distanceText = null!;
     private TextMeshProUGUI statusText = null!;
@@ -23,16 +22,15 @@ public class PassedOut : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Camera.main == null)
+        if (Camera.main == null || character == null)
             return;
 
-        transform.position = Camera.main.WorldToScreenPoint(position);
+        Vector3 position = character.TorsoPos();
 
-        if(character != null)
-            statusText.color = character.refs.customization.PlayerColor;
+        transform.position = Camera.main.WorldToScreenPoint(position);
+        statusText.color = character.refs.customization.PlayerColor;
 
         float distance = Mathf.Round(Vector3.Distance(position, Camera.main.transform.position));
-
         int percLeft = 100 - Mathf.CeilToInt(character?.data.deathTimer * 100f ?? 0f);
         string percText = !isDead ? $"{percLeft}%" : "DEAD";
         distanceText.text = $"{distance}m | {percText}";
