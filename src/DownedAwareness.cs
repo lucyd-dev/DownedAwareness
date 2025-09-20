@@ -33,7 +33,7 @@ public class Plugin : BaseUnityPlugin
         harmony.PatchAll(typeof(GUIManagerPatch));
         harmony.PatchAll(typeof(CharacterPatch));
 
-        Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} by {MyPluginInfo.PLUGIN_AUTHOR} initialized!");
+        Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} by {MyPluginInfo.PLUGIN_AUTHOR} initialized!");
 
     }
     private void OnDestroy()

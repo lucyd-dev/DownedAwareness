@@ -33,4 +33,11 @@ static class CharacterPatch
     {
         POM.UpdateInstance(__instance, true);
     }
+
+    [HarmonyPatch("OnDestroy")]
+    [HarmonyPostfix]
+    private static void OnDestroy_Postfix(Character __instance)
+    {
+        POM.UpdateInstance(__instance);
+    }
 }

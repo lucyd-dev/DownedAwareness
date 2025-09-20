@@ -35,13 +35,13 @@ public class PassedOutManager
         CreateTemplate();
 
         if (isInitialized)
-            Log.LogInfo($"PassedOutManager successfully initialized");
+            Log.LogInfo($"PassedOutManager UI initialized");
     }
     public void OnDestroy()
     {
         CleanupUI();
         if (!isInitialized)
-            Log.LogInfo("PassedOutManager has been unloaded");
+            Log.LogInfo("PassedOutManager UI cleaned up");
     }
 
     private void CleanupUI()
