@@ -1,3 +1,7 @@
+## v1.0.2
+
+- the marker now gets removed if a player disconnects
+
 ## v1.0.1
 
 - fixed the published package
