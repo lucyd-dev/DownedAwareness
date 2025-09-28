@@ -7,6 +7,7 @@ namespace DownedAwareness;
 public class PassedOut : MonoBehaviour
 {
     public Character? character;
+    private Vector3 lastPosition = Vector3.zero;
     private TextMeshProUGUI distanceText = null!;
     private TextMeshProUGUI statusText = null!;
     private bool isDead = false;
@@ -24,18 +25,19 @@ public class PassedOut : MonoBehaviour
     {
         if (Camera.main == null || character == null)
             return;
+            
+        if (!isDead)
+            lastPosition = character.TorsoPos();
 
-        Vector3 position = character.TorsoPos();
-
-        transform.position = Camera.main.WorldToScreenPoint(position);
+        transform.position = Camera.main.WorldToScreenPoint(lastPosition);
         statusText.color = character.refs.customization.PlayerColor;
 
-        float distance = Mathf.Round(Vector3.Distance(position, Camera.main.transform.position));
-        int percLeft = 100 - Mathf.CeilToInt(character?.data.deathTimer * 100f ?? 0f);
+        float distance = Mathf.Round(Vector3.Distance(lastPosition, Camera.main.transform.position));
+        int percLeft = 100 - Mathf.CeilToInt(character.data.deathTimer * 100f);
         string percText = !isDead ? $"{percLeft}%" : "DEAD";
         distanceText.text = $"{distance}m | {percText}";
 
-        float angle = Vector3.Angle(Camera.main.transform.forward, position - Camera.main.transform.position);
+        float angle = Vector3.Angle(Camera.main.transform.forward, lastPosition - Camera.main.transform.position);
         bool visible = angle < 90f;
         statusText.gameObject.SetActive(visible);
         distanceText.gameObject.SetActive(visible);
