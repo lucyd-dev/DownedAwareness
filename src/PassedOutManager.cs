@@ -23,7 +23,7 @@ public class PassedOutManager
 
     public PassedOutManager()
     {
-        Log.LogInfo("PassedOutManager has started");
+        Log.LogDebug("PassedOutManager has started");
     }
 
     public void Initialize()
@@ -35,13 +35,13 @@ public class PassedOutManager
         CreateTemplate();
 
         if (isInitialized)
-            Log.LogInfo($"PassedOutManager UI initialized");
+            Log.LogDebug($"PassedOutManager UI initialized");
     }
     public void OnDestroy()
     {
         CleanupUI();
         if (!isInitialized)
-            Log.LogInfo("PassedOutManager UI cleaned up");
+            Log.LogDebug("PassedOutManager UI cleaned up");
     }
 
     private void CleanupUI()
@@ -95,7 +95,7 @@ public class PassedOutManager
         canvasObj.AddComponent<GraphicRaycaster>();
         canvasObj.layer = LayerMask.NameToLayer("UI");
 
-        Log.LogInfo("Canvas_PassedOutMarkers created");
+        Log.LogDebug("Canvas_PassedOutMarkers created");
     }
     private void CreateTemplate()
     {
@@ -120,7 +120,7 @@ public class PassedOutManager
 
         template.SetActive(false);
 
-        Log.LogInfo("PassedOutMarker template created");
+        Log.LogDebug("PassedOutMarker template created");
     }
 
     private GameObject AddTMPChildren(string name, Transform parent, Vector2 size)

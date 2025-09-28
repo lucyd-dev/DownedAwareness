@@ -11,6 +11,7 @@ static class CharacterPatch
     private static void RPCA_PassOut_Postfix(Character __instance)
     {
         POM.CreateInstance(__instance);
+        Log.LogDebug($"PassedOut {__instance.name}");
     }
 
     [HarmonyPatch("RPCA_UnPassOut")]
@@ -18,6 +19,7 @@ static class CharacterPatch
     private static void RPCA_UnPassOut_Postfix(Character __instance)
     {
         POM.UpdateInstance(__instance);
+        Log.LogDebug($"UnPassedOut {__instance.name}");
     }
 
     [HarmonyPatch("RPCA_Revive")]
@@ -25,6 +27,7 @@ static class CharacterPatch
     private static void RPCA_Revive_Postfix(Character __instance)
     {
         POM.UpdateInstance(__instance);
+        Log.LogDebug($"Revived {__instance.name}");
     }
 
     [HarmonyPatch("RPCA_Die")]
@@ -32,6 +35,7 @@ static class CharacterPatch
     private static void RPCA_Die_Postfix(Character __instance)
     {
         POM.UpdateInstance(__instance, true);
+        Log.LogDebug($"Died {__instance.name}");
     }
 
     [HarmonyPatch("OnDestroy")]
@@ -39,5 +43,6 @@ static class CharacterPatch
     private static void OnDestroy_Postfix(Character __instance)
     {
         POM.UpdateInstance(__instance);
+        Log.LogDebug($"Destroyed {__instance.name}");
     }
 }
