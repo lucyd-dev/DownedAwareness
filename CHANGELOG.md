@@ -1,3 +1,7 @@
+## v1.0.3
+
+- fixed the marker not visible when the player is dead
+
 ## v1.0.2
 
 - the marker now gets removed if a player disconnects
