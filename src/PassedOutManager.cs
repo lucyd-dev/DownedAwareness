@@ -9,7 +9,7 @@ namespace DownedAwareness;
 public class PassedOutManager
 {
     private TMP_FontAsset font = null!;
-    private Material textMaterial = null!;
+    private Material fontMaterial = null!;
     private Canvas passedOutCanvas = null!;
     private GameObject template = null!;
     private readonly Dictionary<Character, GameObject> passedOutInstances = new Dictionary<Character, GameObject>();
@@ -62,11 +62,11 @@ public class PassedOutManager
         TextMeshProUGUI[] textComponents = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
         foreach (TextMeshProUGUI textComponent in textComponents)
         {
-            if (textComponent.name == "InteractNameText" || textComponent.name == "InteractPromptText" || textComponent.name == "ItemPromptMain")
+            if (textComponent.name == "Text" &&
+                textComponent.materialForRendering.name.Contains("DarumaDropOne-Regular SDF Material"))
             {
                 font = textComponent.font;
-                textMaterial = textComponent.material;
-                Log.LogInfo("Found game font: " + font.name);
+                fontMaterial = textComponent.materialForRendering;
                 return;
             }
         }
@@ -83,16 +83,16 @@ public class PassedOutManager
         passedOutInstances.Clear();
 
         GameObject guiManager = GameObject.Find("GAME/GUIManager");
-        GameObject canvasObj = new GameObject("Canvas_PassedOutMarkers");
+        GameObject canvasObj = new GameObject("Canvas_PassedOutMarkers", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
         canvasObj.transform.SetParent(guiManager.transform);
-        passedOutCanvas = canvasObj.AddComponent<Canvas>();
+        passedOutCanvas = canvasObj.GetComponent<Canvas>();
         passedOutCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
         passedOutCanvas.sortingOrder = 100;
-        CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();
+        CanvasScaler scaler = canvasObj.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920f, 1080f);
         scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
-        canvasObj.AddComponent<GraphicRaycaster>();
+        canvasObj.GetComponent<GraphicRaycaster>();
         canvasObj.layer = LayerMask.NameToLayer("UI");
 
         Log.LogDebug("Canvas_PassedOutMarkers created");
@@ -101,10 +101,8 @@ public class PassedOutManager
     {
         if (template != null) return;
 
-        template = new GameObject("PassedOutMarker", typeof(RectTransform));
+        template = new GameObject("PassedOutMarker", typeof(RectTransform) , typeof(CanvasRenderer), typeof(PassedOut));
         template.transform.SetParent(passedOutCanvas.transform);
-        template.AddComponent<CanvasRenderer>();
-        template.AddComponent<PassedOut>();
 
         GameObject statusText = AddTMPChildren("StatusText", template.transform, new Vector2(200f, 80f));
         statusText.transform.SetParent(template.transform, true);
@@ -128,7 +126,7 @@ public class PassedOutManager
         if (font == null)
             FindFont();
 
-        GameObject text = new GameObject(name, typeof(RectTransform));
+        GameObject text = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI), typeof(Shadow));
         text.transform.SetParent(parent, true);
 
         RectTransform textRect = text.GetComponent<RectTransform>();
@@ -137,17 +135,19 @@ public class PassedOutManager
         textRect.pivot = new Vector2(0.5f, 0.5f);
         textRect.sizeDelta = size;
 
-        var textTMP = text.AddComponent<TextMeshProUGUI>();
+        var textTMP = text.GetComponent<TextMeshProUGUI>();
         textTMP.font = font;
-        if (textMaterial != null)
-            textTMP.material = textMaterial;
+        textTMP.fontMaterial = fontMaterial;
         textTMP.fontSize = 20f;
         textTMP.color = Color.white;
         textTMP.outlineWidth = 0.2f;
         textTMP.outlineColor = Color.black;
         textTMP.enableAutoSizing = false;
+        textTMP.alignment = TextAlignmentOptions.Center;
+        textTMP.horizontalAlignment = HorizontalAlignmentOptions.Center;
+        textTMP.verticalAlignment = VerticalAlignmentOptions.Middle;
 
-        Shadow shadow = text.AddComponent<Shadow>();
+        Shadow shadow = text.GetComponent<Shadow>();
         shadow.effectColor = new Color(0f, 0f, 0f, 0.95f);
         shadow.effectDistance = new Vector2(2f, -2f);
 
