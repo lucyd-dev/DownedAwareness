@@ -1,3 +1,7 @@
+## v1.0.4 - (PEAK v2.0.a update)
+
+- compatibility issues with the “Final Ascent” update have been resolved
+
 ## v1.0.3
 
 - fixed the marker not visible when the player is dead
