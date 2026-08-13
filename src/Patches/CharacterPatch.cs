@@ -22,9 +22,9 @@ static class CharacterPatch
         Log.LogDebug($"UnPassedOut {__instance.name}");
     }
 
-    [HarmonyPatch("RPCA_Revive")]
+    [HarmonyPatch("RPCA_ReviveAtPosition")]
     [HarmonyPostfix]
-    private static void RPCA_Revive_Postfix(Character __instance)
+    private static void RPCA_ReviveAtPosition_Postfix(Character __instance)
     {
         POM.UpdateInstance(__instance);
         Log.LogDebug($"Revived {__instance.name}");
