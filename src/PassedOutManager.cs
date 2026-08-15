@@ -159,7 +159,7 @@ public class PassedOutManager
         if (passedOutCanvas == null || template == null || character.name == Character.localCharacter.name)
             return;
 
-        UpdateInstance(character);
+        RemoveInstance(character);
 
         GameObject newInstance = Object.Instantiate(template, passedOutCanvas.transform);
 
@@ -170,22 +170,22 @@ public class PassedOutManager
         passedOutInstances[character] = newInstance;
     }
 
-    public void UpdateInstance(Character character, bool isDead = false)
+    public void RemoveInstance(Character character, bool isDead = false)
     {
         if (passedOutInstances.TryGetValue(character, out var instance) && instance != null)
         {
             if (isDead)
             {
                 instance.GetComponent<PassedOut>().hasDied();
-                RemoveInstance(instance, BoundConfig.General.deadTimer.Value);
+                DestroyInstance(instance, BoundConfig.General.deadTimer.Value);
                 return;
             }
 
-            RemoveInstance(instance);
+            DestroyInstance(instance);
         }
     }
 
-    private void RemoveInstance(GameObject instance, float delay = 0f)
+    private void DestroyInstance(GameObject instance, float delay = 0f)
     {
         Object.Destroy(instance, delay);
     }
