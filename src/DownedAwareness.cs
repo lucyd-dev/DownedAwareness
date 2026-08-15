@@ -20,7 +20,8 @@ public class Plugin : BaseUnityPlugin
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null)
+            instance = this;
 
         // Prevent the plugin from being deleted
         gameObject.transform.parent = null;
@@ -32,6 +33,7 @@ public class Plugin : BaseUnityPlugin
 
         harmony.PatchAll(typeof(GUIManagerPatch));
         harmony.PatchAll(typeof(CharacterPatch));
+        harmony.PatchAll(typeof(CharacterDataPatch));
 
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} by {MyPluginInfo.PLUGIN_AUTHOR} initialized!");
 
