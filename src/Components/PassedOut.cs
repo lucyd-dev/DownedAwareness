@@ -25,7 +25,7 @@ public class PassedOut : MonoBehaviour
     {
         if (Camera.main == null || character == null)
             return;
-            
+
         if (!isDead)
             lastPosition = character.TorsoPos();
 
@@ -33,7 +33,7 @@ public class PassedOut : MonoBehaviour
         statusText.color = character.refs.customization.PlayerColor;
 
         float distance = Mathf.Round(Vector3.Distance(lastPosition, Camera.main.transform.position));
-        int percLeft = 100 - Mathf.CeilToInt(character.data.deathTimer * 100f);
+        int percLeft = Mathf.Max(0, 100 - Mathf.CeilToInt(character.data.deathTimer * 100f));
         string percText = !isDead ? $"{percLeft}%" : "DEAD";
         distanceText.text = $"{distance}m | {percText}";
 
