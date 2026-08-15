@@ -1,3 +1,7 @@
+## v1.0.5
+
+- fixed removing the marker when a player gets revived by a checkpoint flag
+
 ## v1.0.4 - (PEAK v2.0.a update)
 
 - compatibility issues with the “Final Ascent” update have been resolved
