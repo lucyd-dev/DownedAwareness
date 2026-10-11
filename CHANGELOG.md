@@ -1,3 +1,7 @@
+## v1.1.0
+
+- Distances now use PEAK's in-game meters (world units x 1.6) instead of raw Unity units, matching the game's HUD and achievement distances (same fix as BetterPingDistance #1 | thanks to aliteralmoron2)
+
 ## v1.0.5
 
 - fixed removing the marker when a player gets revived by a checkpoint flag
