@@ -32,7 +32,7 @@ public class PassedOut : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(lastPosition);
         statusText.color = character.refs.customization.PlayerColor;
 
-        float distance = Mathf.Round(Vector3.Distance(lastPosition, Camera.main.transform.position));
+        float distance = Mathf.Round(Vector3.Distance(lastPosition, Camera.main.transform.position) * CharacterStats.unitsToMeters);
         int percLeft = Mathf.Max(0, 100 - Mathf.CeilToInt(character.data.deathTimer * 100f));
         string percText = !isDead ? $"{percLeft}%" : "DEAD";
         distanceText.text = $"{distance}m | {percText}";
