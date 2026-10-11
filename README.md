@@ -1,8 +1,8 @@
 # Downed Awareness
 
 [![GitHub](https://img.shields.io/badge/GitHub-DownedAwareness-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/lucyd-dev/DownedAwareness/)
-[![Thunderstore Version](https://img.shields.io/thunderstore/v/LucydDemon/DownedAwareness?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/LucydDemon/DownedAwareness/)
-[![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/LucydDemon/DownedAwareness?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/LucydDemon/DownedAwareness/)
+[![Thunderstore Version](https://img.shields.io/thunderstore/v/LucydDemon/DownedAwareness?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/peak/p/LucydDemon/DownedAwareness/)
+[![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/LucydDemon/DownedAwareness?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/peak/p/LucydDemon/DownedAwareness/)
 
 Stay informed with this mod that provides crucial visual cues for downed or unconscious players. You'll see a marker on their location indicating the distance and the time remaining for a revive. Even after a player dies, their body's position will be highlighted for a default of 10 seconds, a setting you can adjust or turn off entirely.
 
